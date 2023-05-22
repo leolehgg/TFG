@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+
+    <title>login</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/dp/rutinaEjercicioFisico.css}" rel="stylesheet">
+
+
+</head>
+<body>
+
+    <!-- NAVBAR =====================================================================================================-->
+    <header id="header1" >
+        <nav class="circle">
+            <ul>
+                <li><a href="/" >Inicio</a></li>
+                <li><a href="/dp" >DESARROLLO PERSONAL</a></li>
+                <li><a href="/dp/libro" >LIBRO</a></li>
+                <li><a href="/dp/objetivoPersonal" >OBJETIVO PERSONAL</a></li>
+                <li><a href="/dp/rutinaComidas" >RUTINA DE COMIDAS</a></li>
+                <li><a href="/dp/rutinaEjercicioFisico" >RUTINA DE EJERCICIO FISICO</a></li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()"> CERRAR SESIÓN</a></li>
+            </ul>
+        </nav>
+        <form th:action="@{/logout}" method="post" id="logoutForm"></form>
+    </header>
+
+    <h1 id="titulo1">RUTINA DE EJERCICIO FISICO</h1>
+    <!-- FORMULARIO =====================================================================================================-->
+    <form method="post" action="#"
+          th:action="@{/dp/rutinaEjercicioFisico/submit}"
+          th:object="${EFForm}">
+        <div>
+            <input type="hidden" id="id" name="id" th:field="*{id}" />
+            <div >
+                <label for="nombre">NOMBRE</label>
+                <input type="text"  id="nombre" placeholder="NOMBRE" th:field="*{nombre}" />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+    </form>
+
+    <form method="post" action="#"
+          th:action="@{/dp/rutinaEjercicioFisico/submitejercicio}"
+          th:object="${EjercicioForm}">
+        <div>
+            <input type="hidden" id="idEj" name="id" th:field="*{id}" />
+            <div >
+                <label for="nombreEjercicio">NOMBRE</label>
+                <input type="text"  id="nombreEjercicio" placeholder="NOMBRE" th:field="*{nombreEjercicio}" />
+            </div>
+            <div th:each="Tp : ${listaRutinaEjercicioFisico}">
+                <div >
+                    <input type="radio"  th:field="*{rutinaEjercicioFisico}" th:value="${Tp.id}" >
+                    <label th:for="${#ids.prev('rutinaEjercicioFisico')}"
+                           th:text="${Tp.nombre}">Rutina EF</label>
+                </div>
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+    </form>
+
+
+    <!-- TABLA =====================================================================================================-->
+    <table th:each="rutina : ${listaRutinaEjercicioFisico}">
+        <tr>
+            <th colspan="2" th:text="${rutina.nombre}"></th>
+        </tr>
+        <tr>
+            <th>Ejercicio</th>
+            <!-- Agrega más encabezados de columna para otros atributos del ejercicio -->
+        </tr>
+        <tr th:each="ejercicio : ${listaEjercicios}" th:if="${ejercicio.rutinaEjercicioFisico.id == rutina.id}">
+            <td th:text="${ejercicio.nombreEjercicio}"></td>
+            <!-- Agrega más celdas para otros atributos del ejercicio -->
+        </tr>
+    </table>
+
+
+</body>
+</html>

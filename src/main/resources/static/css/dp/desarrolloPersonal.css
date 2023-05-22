@@ -1,0 +1,333 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+#titulo1{
+    font-size: 80px;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 20px;
+}
+body {
+    background-image: linear-gradient(rgba(0, 0, 0 , 0), rgba(0, 0, 0, 0)) ,url("../../img/pexels-eberhard-grossgasteiger-691668.jpg");
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 15px;
+    padding: 5px;
+    color: white;
+}
+.titulo3{
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* ===================================BOTONES===================================== */
+/* =============================================================================== */
+/**Typeo CSS Start**/
+* {
+    box-sizing: border-box;
+}
+
+
+.btn-group-main .text-center{
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+.mrng-60-top {
+    margin-top: 60px;
+}
+.row-btn {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+.row-btn .col-btn {
+    max-width: 25%;
+    width: 100%;
+    padding: 0px 10px;
+}
+/**Typeo CSS End**/
+/* Global Button Styles */
+a.animated-button:link, a.animated-button:visited {
+    position: relative;
+    display: block;
+    margin: 30px auto 0;
+    padding: 14px 15px;
+    color: #fff;
+    font-size:14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: .08em;
+    border-radius: 0;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+a.animated-button:link:after, a.animated-button:visited:after {
+    content: "";
+    position: absolute;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    width: 150%;
+    z-index: -1;
+    -webkit-transition: all 0.75s ease 0s;
+    -moz-transition: all 0.75s ease 0s;
+    -o-transition: all 0.75s ease 0s;
+    transition: all 0.75s ease 0s;
+}
+a.animated-button:link:hover, a.animated-button:visited:hover {
+    color: #FFF;
+    text-shadow: none;
+}
+a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+    height: 450%;
+}
+a.animated-button:link, a.animated-button:visited {
+    position: relative;
+    display: block;
+    margin: 30px auto 0;
+    padding: 14px 15px;
+    color: #fff;
+    font-size:14px;
+    border-radius: 0;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: .08em;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+/* Victoria Buttons */
+
+a.animated-button.victoria-one {
+    border: 2px solid #ffffff;
+}
+a.animated-button.victoria-one:after {
+    background: rgba(255, 255, 255, 0.8);
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+}
+a.animated-button.victoria-two {
+    border: 2px solid #ffffff;
+}
+a.animated-button.victoria-two:after {
+    background: rgba(255, 255, 255, 0.8);
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(25deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(25deg);
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(25deg);
+    transform: translateX(-50%) translateY(-50%) rotate(25deg);
+}
+/* ===================================BOTONES===================================== */
+/* =============================================================================== */
+
+
+/* ===================================NAV========================================= */
+/* =============================================================================== */
+
+<!-- NAV -->
+
+/* NAVIGATION */
+nav {
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.64);
+    padding: 50px 0;
+    box-shadow: 0px 5px 0px #dedede;
+}
+nav ul {
+    list-style: none;
+    text-align: center;
+}
+nav ul li {
+    display: inline-block;
+}
+nav ul li a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #aaa;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0 10px;
+}
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+    transition: all .5s;
+}
+nav ul li a:hover {
+    color: #555;
+}
+
+/* Circle */
+nav.circle ul li a {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+nav.circle ul li a:after {
+    display: block;
+    position: absolute;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '.';
+    color: transparent;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    background: transparent;
+}
+nav.circle ul li a:hover:after {
+    -webkit-animation: circle 1.5s ease-in forwards;
+}
+
+
+/* Keyframes */
+@-webkit-keyframes circle {
+    0% {
+        width: 1px;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        height: 1px;
+        z-index: -1;
+        background: rgba(255, 245, 231, 0.85);;
+        border-radius: 100%;
+    }
+    100% {
+        background: #aaa;
+        height: 5000%;
+        width: 5000%;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-radius: 0;
+    }
+}
+
+/* ===================================NAV========================================= */
+/* =============================================================================== */
+
+/* ===================================TABLA======================================= */
+/* =============================================================================== */
+
+#contenedor1{
+    padding: 500px 0px 500px 0;
+}
+#contenedor2{
+    margin-top: 200px;
+}
+
+.blue { color: #185875; }
+.yellow { color: #FFF842; }
+
+.container th h1 {
+    font-weight: bold;
+    font-size: 1em;
+    text-align: left;
+    color: #185875;
+}
+
+.container td {
+    font-weight: normal;
+    font-size: 1em;
+    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+    -moz-box-shadow: 0 2px 2px -2px #0E1119;
+    box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.container {
+    text-align: left;
+    overflow: hidden;
+    width: 80%;
+    display: table;
+    padding: 30px  0px  30px 0;
+
+}
+
+.container td, .container th {
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left:2%;
+}
+
+/* Background-color of the odd rows */
+.container tr:nth-child(odd) {
+    background-color: rgba(169, 169, 169, 0.47);
+    backdrop-filter: blur(6px);
+}
+
+/* Background-color of the even rows */
+.container tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.48);
+    backdrop-filter: blur(6px);
+}
+
+.container th {
+    background-color: rgba(0, 0, 0, 0.63);
+    backdrop-filter: blur(6px);
+}
+
+.container td:first-child { color: #000000; }
+
+.container tr:hover {
+    background-color: #464A52;
+    -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+    -moz-box-shadow: 0 6px 6px -6px #0E1119;
+    box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.container td:hover {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+
+    box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+    transform: translate3d(6px, -6px, 0);
+
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+    transition-timing-function: line;
+}
+
+@media (max-width: 800px) {
+    .container td:nth-child(4),
+    .container th:nth-child(4) { display: none; }
+}
+
+/* ===================================TABLA======================================= */
+/* =============================================================================== */

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>login</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/entrada/login.css}" rel="stylesheet">
+
+
+
+
+</head>
+<body>
+
+
+<div class="page">
+    <div class="container">
+        <div class="left">
+
+
+            <h4 class="text"  >6:28</h4>
+
+            <div class="eula" sec:authorize="!isAuthenticated()">
+                <p> 6:28 es un proyecto personal <br>
+                    en el que ...
+                </p>
+            </div>
+            <div class="eula" sec:authorize="isAuthenticated()">
+                <p  sec:authorize="isAuthenticated()">  Sesión iniciada correctamente </p>
+                <button onclick="window.location.href='/index'" sec:authorize="isAuthenticated()"  ><span>index</span></button>
+            </div>
+
+        </div>
+
+        <div class="right">
+            <form sec:authorize="!isAuthenticated()" th:action="@{/login}"  method="post" class="form">
+
+                <div>
+                    <input id="email" name="username" type="text"  placeholder='usuario'>
+                </div>
+
+                <div>
+                    <input  id="password" name="password" type="password"  placeholder='contraseña'>
+                </div>
+
+                <div class="sign-in-container" >
+                    <button id="sub" type="submit" >Acceder</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    <script th:src="@{/js/entrada/login.js}"></script>
+
+
+
+</body>
+</html>

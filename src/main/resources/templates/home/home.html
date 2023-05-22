@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+
+    <title>login</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/home/home.css}" rel="stylesheet">
+
+    <!-- Links slogan-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+
+
+</head>
+<body>
+
+  <h1 id="titulo1">6:28</h1>
+
+  <button id="open-btn">X</button>
+
+  <!--Modal & Modal Background-->
+  <div id="modal-container">
+      <div id="modal">
+          <div class="col-btn"> <a href="#" class="btn btn-sm animated-button victoria-one"
+                                   onclick="window.location.href='/dp'"  >OBJETIVO PERSONAL</a> </div>
+          <div class="col-btn"> <a href="#" class="btn btn-sm animated-button victoria-three"
+                                   onclick="window.location.href='/diario'" >DIARIO</a> </div>
+          <div class="col-btn"> <a href="#" class="btn btn-sm animated-button victoria-two"
+                                   onclick="window.location.href='/economia'" >RUTINA DE COMIDAS</a> </div>
+          <!--<h1 sec:authorize="isAuthenticated()" id="m1">Bienvenido <span sec:authentication="name"></span></h1>-->
+
+          <form th:action="@{/logout}" method="post" id="logoutForm"></form>
+
+          <div id="close-btn">&times;</div>
+      </div>
+  </div>
+
+  <!-- Enlaces js =====================================================================================================-->
+  <script th:src="@{/js/home/home.js}"></script>
+
+
+</body>
+</html>

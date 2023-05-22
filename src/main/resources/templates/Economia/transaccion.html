@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+
+    <title>login</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/economia/transaccion.css}" rel="stylesheet">
+
+</head>
+<body>
+
+    <h1>TRANSACCION</h1>
+
+    <form method="post" action="#"
+          th:action="@{/economia/transaccion/submit}"
+          th:object="${transaccionForm}">
+        <div>
+            <input type="hidden" id="id" name="id" th:field="*{id}" />
+            <div >
+                <label for="nombre">NOMBRE</label>
+                <input type="text"  id="nombre" placeholder="NOMBRE" th:field="*{nombre}" />
+            </div>
+            <div class="col-sm-6">
+                <label for="fecha" class="form-label">fecha</label>
+                <input type="date" class="form-control" id="fecha" th:field="*{fecha}" />
+            </div>
+            <div th:each="Tp : ${listaTipoTransacciones}">
+                <div >
+                    <input type="radio"  th:field="*{tipoTransaccion}" th:value="${Tp.id}" >
+                    <label th:for="${#ids.prev('tipoTransaccion')}"
+                           th:text="${Tp.nombre}">Tipo de transaccion</label>
+                </div>
+            </div>
+            <div >
+                <label for="descripcion" >Descripción</label>
+                <input type="text"  id="descripcion" placeholder="DESCRIPCIÓN" th:field="*{descripcion}" />
+            </div>
+            <div >
+                <label for="cantidad" >Cantidad</label>
+                <input type="number"  id="cantidad" placeholder="CANTIDAD" th:field="*{cantidad}" />
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+
+    </form>
+
+    <table id="lista-transacciones">
+        <thead>
+        <th>nombre</th>
+        <th>fecha</th>
+        <th>tipoTransacción</th>
+        <th>descripción</th>
+        <th>cantidad</th>
+
+        </thead>
+        <tbody>
+        <tr th:each="transaccion : ${listaTransacciones}">
+            <td th:text="${transaccion.nombre}">NOMBRE</td>
+            <td th:text="${#temporals.format(transaccion.fecha,'MM-yyyy')}">2022-01-01</td>
+            <td th:text="${transaccion?.tipoTransaccion?.nombre}">TIPO DE TRANSACCION</td>
+            <td th:text="${transaccion.descripcion}">AUTOR</td>
+            <td th:text="${transaccion.cantidad}">OPINION</td>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

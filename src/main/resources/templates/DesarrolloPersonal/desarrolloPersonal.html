@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+
+    <title>login</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/dp/desarrolloPersonal.css}" rel="stylesheet">
+
+</head>
+<body>
+    <!-- NAVBAR =====================================================================================================-->
+    <header id="header1" >
+        <nav class="circle">
+            <ul>
+                <li><a href="/" >Inicio</a></li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()"> CERRAR SESIÓN</a></li>
+            </ul>
+        </nav>
+        <form th:action="@{/logout}" method="post" id="logoutForm"></form>
+    </header>
+
+    <!-- LINKS -->
+    <h1 id="titulo1">DESARROLLO PERSONAL</h1>
+
+    <!-- BOTONES =========================================================================================================-->
+    <div class="row-btn">
+        <div class="col-btn"> <a href="#" class="btn btn-sm animated-button victoria-one"
+                                 onclick="window.location.href='/dp/libro'" sec:authorize="isAuthenticated()"  >LIBROS</a> </div>
+        <div class="col-btn"> <a href="#" class="btn btn-sm animated-button victoria-one"
+                                 onclick="window.location.href='/dp/objetivoPersonal'" sec:authorize="isAuthenticated()">OBJETIVO PERSONAL</a> </div>
+        <div class="col-btn"> <a href="#" class="btn btn-sm animated-button victoria-two"
+                                 onclick="window.location.href='/dp/rutinaComidas'" sec:authorize="isAuthenticated()" >RUTINA DE COMIDAS</a> </div>
+        <div class="col-btn"> <a href="#" class="btn btn-sm animated-button victoria-two"
+                                 onclick="window.location.href='/dp/rutinaEjercicioFisico'" sec:authorize="isAuthenticated()">RUTINA DE EJERCICIO FÍSICO</a> </div>
+    </div>
+
+    <div id="contenedor1">
+        <!-- TABLA1 =========================================================================================================-->
+        <div class="contenedor2">
+            <h3 class="titulo3"> LIBROS </h3>
+            <table class="container">
+                <thead>
+                <th>nombre</th>
+                <th>autor</th>
+                <th>opinion</th>
+                </thead>
+                <tbody>
+                <tr th:each="libro : ${listaLibros}">
+                    <td th:text="${libro.nombre}">NOMBRE</td>
+                    <td th:text="${libro.autor}">AUTOR</td>
+                    <td th:text="${libro.opinion}">OPINION</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TABLA2 =========================================================================================================-->
+        <div class="contenedor2">
+            <h3 class="titulo3"> OBJETIVO PERSONAL </h3>
+            <table class="container">
+                <thead>
+                <th>nombre</th>
+                <th>descripción</th>
+                <th>¿alcanzado?</th>
+                </thead>
+                <tbody>
+                <tr th:each="op : ${listaop}">
+                    <td th:text="${op.nombre}">NOMBRE</td>
+                    <td th:text="${op.descripcion}">AUTOR</td>
+                    <td>
+                        <span th:if="${op.alcanzado}" aria-hidden="true">Alcanzado</span>
+                        <span th:unless="${op.alcanzado}" aria-hidden="true">No alcanzado</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TABLA3 =========================================================================================================-->
+        <div class="contenedor2">
+            <h3 class="titulo3"> RUTINA DE COMIDAS </h3>
+            <table class="container">
+                <thead>
+                <th>NOMBRE</th>
+                <th>DESCRIPCIÓN</th>
+                <th>CALORIAS</th>
+                <th>COMIDAS</th>
+                <th>TIPO DE COMIDA</th>
+                </thead>
+                <tbody>
+                <tr th:each="op : ${listacomidas}">
+                    <td th:text="${op.nombre}">NOMBRE</td>
+                    <td th:text="${op.descripcion}">DESCRIPCION</td>
+                    <td th:text="${op.calorias}">CALORIAS</td>
+                    <td>
+                        <span th:each="comida : ${op.comidas}" th:text="${comida.nombre}">COMIDA</span>
+                    </td>
+                    <td th:text="${op.tipoComida.nombre}"> TIPO DE COMIDA</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</body>
+</html>
