@@ -43,43 +43,76 @@
         <form th:action="@{/logout}" method="post" id="logoutForm"></form>
     </header>
 
-    <h1 id="titulo1">RUTINA COMIDAS</h1>
+    <h1 id="titulo1">RUTINA DE COMIDAS</h1>
+
+
     <!-- FORMULARIO =====================================================================================================-->
-    <div class="contenedor-formulario">
-        <div class="wrap">
-            <form  method="post" action="#" class="formulario" name="formulario_registro"
-                   th:action="@{/dp/rutinacomidas/submit}"
-                   th:object="${ComidasForm}">
-                <div>
-                    <input type="hidden" id="id" name="id"  />
-                    <div class="input-group">
-                        <input type="text" id="nombre" name="nombre" th:field="*{nombre}" />
-                        <label class="label" for="nombre">NOMBRE</label>
+    <div id="contenedor-formularios">
+        <div class="contenedor-formulario">
+            <div class="wrap">
+                <form  method="post" action="#" class="formulario" name="formulario_registro"
+                       th:action="@{/dp/rutinacomidas/submit}"
+                       th:object="${ComidasForm}">
+                    <div>
+                        <h1>RUTINA</h1>
+                        <input type="hidden" id="id" name="id"  />
+                        <div class="input-group">
+                            <input type="text" id="nombre" name="nombre" th:field="*{nombre}" />
+                            <label class="label" for="nombre">NOMBRE</label>
+                        </div>
+
+                        <div class="input-group">
+                            <input type="text" id="descripcion" name="descripcion" th:field="*{descripcion}"/>
+                            <label class="label" for="descripcion">DESCRIPCIÓN</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="calorias" name="calorias" th:field="*{calorias}"/>
+                            <label class="label" for="calorias">CALORIAS</label>
+                        </div>
+
+
+                        <div th:each="Tp : ${listaTipoComida}">
+                            <div >
+                                <input type="radio"  th:field="*{tipoComida}" th:value="${Tp.id}" >
+                                <label th:for="${#ids.prev('tipoComida')}"
+                                       th:text="${Tp.nombre}">Tipo de comida</label>
+                            </div>
+                        </div>
+
+
                     </div>
 
-                    <div class="input-group">
-                        <input type="text" id="descripcion" name="descripcion" th:field="*{descripcion}"/>
-                        <label class="label" for="descripcion">DESCRIPCIÓN</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" id="calorias" name="calorias" th:field="*{calorias}"/>
-                        <label class="label" for="calorias">CALORIAS</label>
-                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+                </form>
+            </div>
+        </div>
 
+        <!-- FORMULARIO =====================================================================================================-->
+        <div class="contenedor-formulario">
+            <div class="wrap">
+                <form  method="post" action="#" class="formulario" name="formulario_registro1"
+                       th:action="@{/dp/comidas/submit}"
+                       th:object="${comidaForm}">
+                    <div>
+                        <h1>COMIDA</h1>
+                        <input type="hidden" id="id1" name="id"  />
+                        <div class="input-group">
+                            <input type="text" id="nombrecomida" name="nombrecomida" th:field="*{nombre}" />
+                            <label class="label" for="nombrecomida">NOMBRE</label>
+                        </div>
 
-                    <div th:each="Tp : ${listaTipoComida}">
-                        <div >
-                            <input type="radio"  th:field="*{tipoComida}" th:value="${Tp.id}" >
-                            <label th:for="${#ids.prev('tipoComida')}"
-                                   th:text="${Tp.nombre}">Tipo de comida</label>
+                        <div th:each="Tp : ${listaRutinas}">
+                            <div >
+                                <input type="radio"  th:field="*{rutinacomida}" th:value="${Tp.id}" >
+                                <label th:for="${#ids.prev('rutinacomida')}"
+                                       th:text="${Tp.nombre}">Tipo de comida</label>
+                            </div>
                         </div>
                     </div>
 
-
-                </div>
-
-                <button type="submit" class="btn btn-primary mt-3">Enviar</button>
-            </form>
+                    <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -96,7 +129,7 @@
             <th>TIPO DE COMIDA</th>
             </thead>
             <tbody>
-            <tr th:each="op : ${listacomidas}">
+            <tr th:each="op : ${listaRutinas}">
                 <td th:text="${op.nombre}">NOMBRE</td>
                 <td th:text="${op.descripcion}">DESCRIPCION</td>
                 <td th:text="${op.calorias}">CALORIAS</td>

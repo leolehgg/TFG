@@ -122,8 +122,8 @@ public class desarrollopersonalController {
     @GetMapping({ "rutinaComidas"})
     public String rutinaComidas(Model model) {
         model.addAttribute("ComidasForm",new RutinaComidas());
-        model.addAttribute("listacomidas", rutinaComidasService.findAll());
-
+        model.addAttribute("listaRutinas", rutinaComidasService.findAll());
+        model.addAttribute( "comidaForm",new Comida());
         return "DesarrolloPersonal/rutinaComidas";
     }
     @PostMapping("/rutinacomidas/submit")
@@ -136,6 +136,20 @@ public class desarrollopersonalController {
             return "DesarrolloPersonal/desarrolloPersonal";
         } else {
             rutinaComidasService.save(comidas);
+            return "redirect:/dp/rutinaComidas";
+        }
+
+    }
+    @PostMapping("/comidas/submit")
+    public String nuevaComidas(@Valid @ModelAttribute("comidaForm") Comida comidas,
+                                     BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            log.info("hay errores en el formulario");
+
+            return "DesarrolloPersonal/desarrolloPersonal";
+        } else {
+            comidaService.save(comidas);
             return "redirect:/dp/rutinaComidas";
         }
 
